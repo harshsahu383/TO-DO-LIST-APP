@@ -1,24 +1,5 @@
-// document.getElementById('loginform').addEventListener('submit', function(event){
-//     event.preventDefault();
 
-//     const emailInput = document.getElementById('email');
-//     const emailError = document.getElementById('emailError');
-//     // const email = emailInput.trim();
-
-//     if(validateEmail(email)){
-//         emailError.classList.add('hidden');
-//         alert("login successfull");
-//     }
-//     else{
-//         emailError.classList.remove('hidden');
-//     }
-//     function validateEmail(email){
-//         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         return regex.test(email);
-//     }
-// });
-
-//// hide and show pass
+// hide and show pass
 document.addEventListener('DOMContentLoaded', function () {
     let passwordInput = document.getElementById('password');
     let togglePass = document.getElementById('togglePassword');
