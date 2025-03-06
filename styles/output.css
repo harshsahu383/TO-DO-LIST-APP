@@ -299,8 +299,17 @@
   .left-77 {
     left: calc(var(--spacing) * 77);
   }
+  .left-80 {
+    left: calc(var(--spacing) * 80);
+  }
+  .left-85 {
+    left: calc(var(--spacing) * 85);
+  }
   .left-89 {
     left: calc(var(--spacing) * 89);
+  }
+  .left-90 {
+    left: calc(var(--spacing) * 90);
   }
   .left-100 {
     left: calc(var(--spacing) * 100);
@@ -532,6 +541,9 @@
   }
   .h-2 {
     height: calc(var(--spacing) * 2);
+  }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
   }
   .h-4 {
     height: calc(var(--spacing) * 4);
