@@ -281,6 +281,33 @@
   .left-4 {
     left: calc(var(--spacing) * 4);
   }
+  .left-15 {
+    left: calc(var(--spacing) * 15);
+  }
+  .left-70 {
+    left: calc(var(--spacing) * 70);
+  }
+  .left-71 {
+    left: calc(var(--spacing) * 71);
+  }
+  .left-72 {
+    left: calc(var(--spacing) * 72);
+  }
+  .left-76 {
+    left: calc(var(--spacing) * 76);
+  }
+  .left-77 {
+    left: calc(var(--spacing) * 77);
+  }
+  .left-89 {
+    left: calc(var(--spacing) * 89);
+  }
+  .left-100 {
+    left: calc(var(--spacing) * 100);
+  }
+  .left-full {
+    left: 100%;
+  }
   .isolate {
     isolation: isolate;
   }
@@ -515,6 +542,9 @@
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
+  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -548,11 +578,17 @@
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
   .w-5 {
     width: calc(var(--spacing) * 5);
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
+  }
+  .w-7 {
+    width: calc(var(--spacing) * 7);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -704,6 +740,9 @@
   }
   .animate-none {
     animation: none;
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
   .touch-pinch-zoom {
     --tw-pinch-zoom: pinch-zoom;

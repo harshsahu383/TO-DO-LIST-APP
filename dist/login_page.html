@@ -9,7 +9,7 @@
     <body class="bg-gradient-to-r from-blue-500 to-purple-600  bg-gray-100 flex items-center justify-center h-screen">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96 hover:shadow-2xl ">
             <h2 class="text-2xl font-bold mb-6 text-center">CUSTOMER LOGIN</h2>
-            <form>
+            <form id="loginform">
                 <div class="mb-4">
                     <label class="block text-black text-sm font-bold mb-2 flex"
                         for="email"> 
@@ -18,7 +18,8 @@
                     <div class="relative">
                         <input
                         class="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email" type="email" placeholder="Enter Your Email">
+                        id="email" type="email" placeholder="Enter Your Email"> 
+                        <span id="emailError" class="text-red-500 text-sm hidden">Please enter a valid email address.</span>
                       <img src="/images/download.png" alt="Email Icon" class="absolute left-3 top-2 h-5 w-5">
 
                 </div>
@@ -35,24 +36,27 @@
                         id="password" type="password"
                         placeholder=" Enter Your Password">
                         <img src="/images/password.png" alt="password" class="absolute left-3 top-2 h-5 w-5">
+                        <a href="#"><img src="/images/hide.svg" alt="" class="absolute left-71 top-2 h-6 w-7 cursor-pointer" id="togglePassword"></a>
 
                     </div>
+                    
                     
                 </div>
                 <div class="mb-6 items-center w-full justify-center">
                     <label for="Sign up">
-                        Dont Have an account ? <span><a href="sign_up.html">Sign up</a></span>
+                        Dont Have an account ? <span class="cursor-pointer"><a href="sign_up.html">Sign up</a></span>
                     </label>
 
                 </div>
                 <div class="flex items-center justify-center flex-1">
                     <button
-                        class="   bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-100"
-                        type="button">
+                        class="   bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-100 cursor-pointer"
+                        type="submit">
                         Login
                     </button>
                 </div>
             </form>
         </div>
+        <script src="/dist/JS/login_page.js"></script>
     </body>
 </html>
