@@ -5,6 +5,7 @@ const closeModalBtn  = document.getElementById('closeModalBtn');
 const addTaskBtn  = document.getElementById('addTaskBtn');
 const taskForm = document.getElementById('task-form');
 const closeAddFormBtn = document.getElementById('closeAddFormBtn');
+const markAllAsDone = document.getElementById('markAllAsDone');
 
 addNewTaskBtn.addEventListener("click", function(e){
     e.preventDefault();
@@ -65,6 +66,7 @@ function showAlert (message,type = "success"){
     else if (type === 'error'){
         customAlert.classList.add('bg-red-500');
         customAlert.classList.remove('bg-green-500');
+        alertIcon.src='/images/cross.png'
     }
     customAlert.classList.remove('hidden');
 
@@ -76,3 +78,7 @@ function showAlert (message,type = "success"){
 closeAlertBtn.addEventListener('click', () => {
     customAlert.classList.add('hidden');
 })
+
+markAllAsDone.addEventListener('click', () => {
+    showAlert("All Marked AS Done",'success')
+});
