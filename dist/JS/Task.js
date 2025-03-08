@@ -3,7 +3,8 @@ const overlay = document.getElementById('overlay');
 const addNewTaskBtn = document.getElementById('addNewTaskBtn');
 const closeModalBtn  = document.getElementById('closeModalBtn');
 const addTaskBtn  = document.getElementById('addTaskBtn');
-const taskForm = document.getElementById('task-form')
+const taskForm = document.getElementById('task-form');
+const closeAddFormBtn = document.getElementById('closeAddFormBtn');
 
 addNewTaskBtn.addEventListener("click", function(e){
     e.preventDefault();
@@ -19,6 +20,10 @@ overlay.addEventListener("click", (e) => {
     addTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });
+closeAddFormBtn.addEventListener('click', () => {
+    addTaskModal.classList.remove('open');
+    addTaskModal.classList.remove('active');
+})
 // addTaskBtn.addEventListener("click", (e) => {
 //     e.preventDefault();
 //     alert("Task Added successFully");
@@ -32,49 +37,42 @@ const dueDate= document.getElementById('due-date').value.trim();
 const priority= document.getElementById('priority').value;
 
 if(taskTitle && taskDescription && dueDate && priority){
-    showAlert("task added succesfully");
+    showAlert("Task Added Succesfully",'success');
 
-
+    taskForm.reset();
     addTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 }
 else{
-    showAlert("please will all the columns")
+    showAlert("Fill all the columns First", "error")
 }
 
 }
 );
 const customAlert = document.getElementById('customAlert');
-    const alertMessage = document.getElementById('alertMessage');
-    const closeAlertBtn = document.getElementById('closeAlertBtn');
+const alertMessage = document.getElementById('alertMessage');
+const closeAlertBtn = document.getElementById('closeAlertBtn');
+const alertIcon = document.getElementById('alertIcon');
 
-    // Function to show the alert
-    function showAlert(message, type = 'success') {
-        // Set the alert message
-        alertMessage.textContent = message;
+function showAlert (message,type = "success"){
+    alertMessage.textContent = message;
+    if(type==='success'){
+        customAlert.classList.remove('bg-red-500');
+        customAlert.classList.add('bg-green-500');
+        alertIcon.src='/images/check.png';
 
-        // Change alert color based on type
-        if (type === 'success') {
-            customAlert.classList.remove('bg-red-500');
-            customAlert.classList.add('bg-green-500');
-        } else if (type === 'error') {
-            customAlert.classList.remove('bg-green-500');
-            customAlert.classList.add('bg-red-500');
-        }
-
-        // Show the alert
-        customAlert.classList.remove('hidden');
-
-        // Automatically hide the alert after 3 seconds
-        setTimeout(() => {
-            customAlert.classList.add('hidden');
-        }, 3000);
     }
+    else if (type === 'error'){
+        customAlert.classList.add('bg-red-500');
+        customAlert.classList.remove('bg-green-500');
+    }
+    customAlert.classList.remove('hidden');
 
-    // Close the alert when the close button is clicked
-    closeAlertBtn.addEventListener('click', () => {
+    setTimeout(() => {
         customAlert.classList.add('hidden');
-    });
+    }, 3000);
 
-    // Example usage
-    // showAlert('Task Added Successfully!', 'success');
+}
+closeAlertBtn.addEventListener('click', () => {
+    customAlert.classList.add('hidden');
+})
