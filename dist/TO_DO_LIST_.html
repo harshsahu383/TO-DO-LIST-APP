@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Example</title>
+    <title>TO-DO-LIST</title>
     <link href="/styles/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-400">
     <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -31,5 +31,121 @@
             </div>
         </div>
     </nav>
+    <!-- // Task OverView Section -->
+     <div class="flex justify-center">
+        <h1 class="text-[3rem] text-center mt-20 text-black hover:bg-gray-400 shadow-lg inline-block justify-center align-center">Task Overview</h1>
+     </div>
+    <div class="max-w-4xl mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Task Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Total Tasks -->
+                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                    <h3 class="text-lg font-semibold text-blue-800">Total Tasks</h3>
+                    <p class="text-3xl font-bold text-blue-600">25</p>
+                </div>
+
+                <!-- Completed Tasks -->
+                <div class="bg-green-50 p-4 rounded-lg text-center">
+                    <h3 class="text-lg font-semibold text-green-800">Completed Tasks</h3>
+                    <p class="text-3xl font-bold text-green-600">10</p>
+                </div>
+
+                <!-- Pending Tasks -->
+                <div class="bg-yellow-50 p-4 rounded-lg text-center">
+                    <h3 class="text-lg font-semibold text-yellow-800">Pending Tasks</h3>
+                    <p class="text-3xl font-bold text-yellow-600">12</p>
+                </div>
+
+                <!-- Overdue Tasks -->
+                <div class="bg-red-50 p-4 rounded-lg text-center">
+                    <h3 class="text-lg font-semibold text-red-800">Overdue Tasks</h3>
+                    <p class="text-3xl font-bold text-red-600">3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // Upcoming Taks Section// -->
+     <div class="flex justify-center">
+        <h1 class="text-[3rem] text-center mt-20 text-gray-900 hover:bg-gray-400 shadow-lg  inline-block justify-center align-center flex">Upcoming Tasks</h1>
+     </div>
+    
+
+    <div class="max-w-4xl mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Upcoming Tasks</h2>
+            <div class="space-y-4">
+                <!-- Task 1 -->
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Finish Report</h3>
+                        <p class="text-sm text-gray-500">Due: 2023-10-15</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-3 py-1 text-sm font-semibold bg-yellow-100 text-yellow-800 rounded-full">High Priority</span>
+                        <span class="px-3 py-1 text-sm font-semibold bg-blue-100 text-blue-800 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Call Client</h3>
+                        <p class="text-sm text-gray-500">Due: 2023-10-16</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-3 py-1 text-sm font-semibold bg-green-100 text-green-800 rounded-full">Medium Priority</span>
+                        <span class="px-3 py-1 text-sm font-semibold bg-gray-100 text-gray-800 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Update Dashboard</h3>
+                        <p class="text-sm text-gray-500">Due: 2023-10-17</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-3 py-1 text-sm font-semibold bg-red-100 text-red-800 rounded-full">Low Priority</span>
+                        <span class="px-3 py-1 text-sm font-semibold bg-green-100 text-green-800 rounded-full">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <h1 class="text-[3rem] text-center mt-20 text-gray-900 hover:bg-gray-400 shadow-lg  inline-block justify-center align-center flex "> Quick Links</h1>
+     </div>
+    <div class="max-w-4xl mx-auto p-6">
+        <!-- Quick Links Section -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Quick Links</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Add New Task -->
+                <a href="#" class="bg-blue-50 p-6 rounded-lg text-center hover:bg-blue-100 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    <h3 class="mt-4 text-lg font-semibold text-blue-800">Add New Task</h3>
+                </a>
+
+                <!-- Filter Tasks -->
+                <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                    </svg>
+                    <h3 class="mt-4 text-lg font-semibold text-green-800">Filter Tasks</h3>
+                </a>
+
+                <!-- Mark All as Done -->
+                <a href="#" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <h3 class="mt-4 text-lg font-semibold text-purple-800">Mark All as Done</h3>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
