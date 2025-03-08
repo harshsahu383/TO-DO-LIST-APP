@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <link rel="stylesheet" href="/styles/output.css">
+    <link rel="stylesheet" href="/styles/custom.css">
+    </head>
+<body>
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="TO_DO_LIST_.html"><img src="/images/todo.jpg" alt="Logo" class="h-15 w-auto"></a>
+                </div>
+                <div class="hidden md:flex md:space-x-8 md:mx-auto">
+                    <a href="TO_DO_LIST_.html" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Dashboard</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Task</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Projects</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Calendar</a>
+                </div>
+
+                <!-- Right side: Login and Sign Up buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="login_page.html" class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Login</a>
+                    <a href="sign_up.html" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-white shadow-md rounded-lg p-6 mt-6 mx-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Add New Task Button -->
+            <a href="#" id="addNewTaskBtn" class="bg-blue-50 p-6 rounded-lg text-center hover:bg-blue-100 transition duration-300">
+                <svg class="w-10 h-10 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="mt-4 text-lg font-semibold text-blue-800">Add New Task</h3>
+            </a>
+
+            <!-- Filter Tasks -->
+            <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300">
+                <svg class="w-10 h-10 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                </svg>
+                <h3 class="mt-4 text-lg font-semibold text-green-800">Filter Tasks</h3>
+            </a>
+
+            <!-- Mark All as Done -->
+            <a href="#" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300">
+                <svg class="w-10 h-10 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <h3 class="mt-4 text-lg font-semibold text-purple-800">Mark All as Done</h3>
+            </a>
+        </div>
+    </div>
+
+    <!-- Overlay (Hidden by Default) -->
+    <div id="overlay"></div>
+
+    <!-- Add New Task Form (Hidden by Default) -->
+    <div id="addTaskModal" class="fixed top-0 left-0 h-full w-96 bg-white shadow-lg z-50">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Add New Task</h2>
+            <form id="task-form">
+                <div class="mb-4">
+                    <label  class="block text-gray-700 text-sm font-bold mb-2" for="task-title">
+                        Task Title
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="task-title" type="text" placeholder="Enter task title" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="task-description">
+                        Task Description
+                    </label>
+                    <textarea
+                    
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="task-description" rows="4" placeholder="Enter task description"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="due-date">
+                        Due Date
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="due-date" type="date" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="priority">
+                        Priority
+                    </label>
+                    <select
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="priority" required>
+                        <option value="" disabled selected>Select priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <!-- Submit and Cancel Buttons -->
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit" id="addTaskBtn">
+                        Add Task
+                    </button>
+                    <div id="customAlert" class="fixed top-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden">
+                        <span id="alertMessage"></span>
+                        <button id="closeAlertBtn" class="ml-4 text-white hover:text-gray-200">x</button>
+                    </div>
+                    <button
+                        id="closeModalBtn"
+                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="/dist/JS/Task.js"></script>
+</body>
+</html>

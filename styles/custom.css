@@ -1,0 +1,60 @@
+        
+        #addTaskModal {
+            position: fixed;
+            top: 0;
+            left: -100%; 
+            width: 400px; 
+            height: 100vh;
+            background: white;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        #addTaskModal.open {
+            left: 0; 
+        }
+
+        
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        #overlay.active {
+            display: block;
+        }
+        #customAlert {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideIn 0.5s ease-out;
+        }
+    
+        /* Slide-in animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    
+        /* Close button styling */
+        #closeAlertBtn {
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+    
+        /* Hide the alert by default */
+        #closeAlertBtn.hidden {
+            display: none;
+        }
