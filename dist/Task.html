@@ -43,20 +43,20 @@
         <h3 class="mt-4 text-lg font-semibold text-blue-800">Add New Task </h3> 
             </a>
 
-            <!-- Filter Tasks -->
-            <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300" id="filterTasks">
-                <svg class="w-10 h-10 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+            <!-- Delete Task Button -->
+            <a href="#" id="deleteTaskBtn" class="bg-red-50 p-6 rounded-lg text-center hover:bg-red-100 transition duration-300">
+                <svg class="w-10 h-10 mx-auto text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                 </svg>
-                <h3 class="mt-4 text-lg font-semibold text-green-800">Filter Tasks</h3>
+                <h3 class="mt-4 text-lg font-semibold text-red-800">Delete Task</h3>
             </a>
 
-            <!-- Mark All as Done -->
-            <a href="#" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300 " id="markAllAsDone">
-                <svg class="w-10 h-10 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            <!-- Edit Task -->
+            <a href="#" id="editTaskBtn" class="bg-blue-50 p-6 rounded-lg text-center hover:bg-blue-100 transition duration-300">
+                <svg class="w-10 h-10 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
                 </svg>
-                <h3 class="mt-4 text-lg font-semibold text-purple-800">Mark All as Done</h3>
+                <h3 class="mt-4 text-lg font-semibold text-blue-800">Edit Task</h3>
             </a>
         </div>
     </div>
@@ -130,6 +130,69 @@
             </form>
         </div>
     </div>
+    <div class="bg-white shadow-md rounded-lg p-6 mt-6 mx-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Mark All As done -->
+            <a href="#" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300 " id="markAllAsDone">
+                <svg class="w-10 h-10 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <h3 class="mt-4 text-lg font-semibold text-purple-800">Mark All as Done</h3>
+            </a>
+            <!-- Filter Tasks -->
+            <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300" id="filterTasks">
+                <svg class="w-10 h-10 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                </svg>
+                <h3 class="mt-4 text-lg font-semibold text-green-800">Filter Tasks</h3>
+            </a>
+    
+            
+                <!-- Task List Section -->
+                <a href="#" id="taskListBtn" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300 block">
+                    <svg class="w-10 h-10 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <h3 class="mt-4 text-lg font-semibold text-purple-800">Task List</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--delete task button form  -->
+    
+<div id="deleteoverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+
+<!-- Delete Task Form (Hidden by Default) -->
+<d<div id="deleteTaskForm" class="fixed top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-white shadow-md rounded-lg p-6 w-96 transition-all duration-500">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Delete Task</h2>
+    <form id="deleteForm">
+        <!-- Task ID Input -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="task-id">
+                Task ID
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="task-id" type="text" placeholder="Enter Task ID" required>
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="flex items-center justify-between">
+            <button
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit">
+                Delete Task
+            </button>
+            <button
+                id="closeDeleteFormBtn"
+                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>
+    <!-- custom alert message -->
     <div id="customAlert" class="fixed top-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden ">
         <img src="" alt="" id="alertIcon" class="h-5 w-5 mr-3 top-2 ">
         <span id="alertMessage"></span>

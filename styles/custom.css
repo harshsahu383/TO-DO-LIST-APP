@@ -46,7 +46,7 @@
                 transform: translateX(0);
             }
         }
-    
+         
     
         #closeAlertBtn {
             cursor: pointer;
@@ -58,4 +58,23 @@
         .hidden {
             display: none;
             visibility: hidden;
+        }
+        #deleteTaskForm {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100%);
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        #deleteTaskForm.open {
+            transform: translateX(-50%) translateY(50%);
+        }
+    
+        /* Overlay styling */
+        #deleteoverlay {
+            display: none;
+        }
+    
+        #deleteoverlay.active {
+            display: block;
         }
