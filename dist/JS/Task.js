@@ -6,11 +6,17 @@ const addTaskBtn  = document.getElementById('addTaskBtn');
 const taskForm = document.getElementById('task-form');
 const closeAddFormBtn = document.getElementById('closeAddFormBtn');
 const markAllAsDone = document.getElementById('markAllAsDone');
+const deleteTaskModal = document.getElementById('deleteTaskModal');
+const deletetaskForm  = document.getElementById('delete-task-form');
+const closeDeleteModalBtn = document.getElementById('closeDeleteModalBtn');
+const closeDeleteFormBtn = document.getElementById('closeDeleteFormBtn');
+const deleteTaskBtn = document.getElementById('deleteTaskBtn');
+const deleteTaskModalBtn = document.getElementById('deleteTaskModalBtn');
 
 addNewTaskBtn.addEventListener("click", function(e){
     e.preventDefault();
     addTaskModal.classList.add('open');
-    addTaskModal.classList.add('active');
+    overlay.classList.add('active');
 
 });
 closeModalBtn.addEventListener("click", function(e){
@@ -23,7 +29,7 @@ overlay.addEventListener("click", (e) => {
 });
 closeAddFormBtn.addEventListener('click', () => {
     addTaskModal.classList.remove('open');
-    addTaskModal.classList.remove('active');
+    overlay.classList.remove('active');
 })
 // addTaskBtn.addEventListener("click", (e) => {
 //     e.preventDefault();
@@ -61,7 +67,7 @@ function showAlert (message,type = "success"){
         customAlert.classList.remove('bg-red-500');
         customAlert.classList.add('bg-green-500');
         alertIcon.src='/images/check.png';
-
+        overlay.classList.remove
     }
     else if (type === 'error'){
         customAlert.classList.add('bg-red-500');
@@ -82,43 +88,45 @@ closeAlertBtn.addEventListener('click', () => {
 markAllAsDone.addEventListener('click', () => {
     showAlert("All Marked AS Done",'success')
 });
-const deleteTaskBtn = document.getElementById('deleteTaskBtn');
-const deleteTaskForm = document.getElementById('deleteTaskForm');
-const deleteoverlay = document.getElementById('deleteoverlay');
-const closeDeleteFormBtn = document.getElementById('closeDeleteFormBtn');
-
-// Open the Delete Task Form
+// delete task functioning
 deleteTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    deleteTaskForm.classList.add('open'); // Slide the form into view
-    deleteoverlay.classList.add('active'); // Show the overlay
-});
-
-// Close the Delete Task Form
-closeDeleteFormBtn.addEventListener('click', () => {
-    deleteTaskForm.classList.remove('open'); // Slide the form out of view
-    deleteoverlay.classList.remove('active'); // Hide the overlay
-});
-
-// Handle form submission
-const deleteForm = document.getElementById('deleteForm');
-deleteForm.addEventListener('submit', (e) => {
+    deleteTaskModal.classList.add('open');
+    overlay.classList.add('active');
+})
+closeDeleteFormBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
-    const taskId = document.getElementById('task-id').value.trim();
-
-    if (taskId) {
-        alert(`Task with ID ${taskId} has been deleted.`);
-        deleteForm.reset(); // Reset the form
-        deleteTaskForm.classList.remove('open'); // Close the form
-        deleteoverlay.classList.remove('active'); // Hide the overlay
-    } else {
-        alert('Please enter a valid Task ID.');
-    }
+    deleteTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+})
+closeDeleteModalBtn.addEventListener('click',(e) => {
+    e.preventDefault();
+    deleteTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
 });
+overlay.addEventListener('click',(e) => {
+    e.preventDefault();
+    deleteTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+});
+deletetaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const taskId = document.getElementById('task-id').value;
 
-// Close the form when clicking outside (on the overlay)
-deleteoverlay.addEventListener('click', () => {
-    deleteTaskForm.classList.remove('open'); // Slide the form out of view
-    deleteoverlay.classList.remove('active'); // Hide the overlay
+    
+
+    if(taskId){
+        showAlert(`${taskId} is Deleted Succesfully`,'success');
+        deletetaskForm.reset();
+        deleteTaskModal.remove('open');
+        overlay.remove('active');
+    }
+    else {
+        showAlert(`${taskId} is incorrect`,'error');
+        deletetaskForm.reset();
+        deleteTaskModal.remove('open');
+        overlay.remove('active');
+
+        
+    }
 });
