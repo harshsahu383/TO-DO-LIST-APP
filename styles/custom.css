@@ -74,3 +74,22 @@
 #deleteTaskModal.open {
     right: 0; 
 }
+#taskListModal{
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 400px; 
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+
+}
+#taskListModal.open {
+    right: 0; }
+#tasksContainer{
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}

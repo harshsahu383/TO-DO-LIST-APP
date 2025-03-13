@@ -158,7 +158,20 @@
             </div>
         </div>
     </div>
-    <!-- Delete Task Form (Hidden by Default) -->
+    <!-- // task list modal// -->
+    <div id="taskListModal" class="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50">
+        <button class="ml-95 cursor-pointer" id="closeTaskListBtn">×</button>
+    
+        <div class="p-6">
+            <div class="flex justify-between">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">Task List</h2>
+            </div>
+            <div id="tasksContainer" class="space-y-4">
+        
+            </div>
+        </div>
+    </div>
+    <!-- Delete Task Form  -->
 <div id="deleteTaskModal" class="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50">
     <button class="ml-95 cursor-pointer" id="closeDeleteFormBtn">×</button>
 
@@ -179,13 +192,13 @@
             <!-- Submit and Cancel Buttons -->
             <div class="flex items-center justify-between">
                 <button
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline  cursor-pointer"
                     type="submit" id="deleteTaskModalBtn">
                     Delete Task
                 </button>
                 <button
                     id="closeDeleteModalBtn"
-                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
                     type="button">
                     Cancel
                 </button>
@@ -201,6 +214,6 @@
         <button id="closeAlertBtn" class="ml-4 text-white hover:text-gray-200">×</button>
     </div>
 <script src="/dist/JS/Task.js"></script>
-<script src="/dist/JS/main.js"></script>
+<!-- <script src="/dist/JS/main.js"></script> -->
 </body>
 </html>
