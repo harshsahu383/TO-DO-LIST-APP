@@ -93,3 +93,17 @@
     overflow-y: auto;
     padding-right: 10px;
 }
+#filterTaskModal{
+    position: fixed;
+    top: 0;
+    left: -100%; 
+    width: 400px; 
+    height: 100vh;
+    background: white;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+#filterTaskModal.open{
+    left: 0;
+}

@@ -20,6 +20,11 @@ const taskListBtn = document.getElementById('taskListBtn');
 const taskListModal = document.getElementById('taskListModal');
 const closeTaskListBtn = document.getElementById('closeTaskListBtn');
 const tasksContainer = document.getElementById('tasksContainer');
+const filterTaskModal = document.getElementById('filterTaskModal');
+const modalfilterTasksBtn = document.getElementById('modalFilterTasksBtn');
+const submitFilterTasksBtn = document.getElementById('submitFilterTasksBtn');
+const closeFilterFormBtn = document.getElementById('closeFilterFormBtn');
+const cancelFlterTaskBtn = document.getElementById('cancelFlterTaskBtn');
 
 // Functions
 function saveTaskToLocalStorage(task) {
@@ -90,6 +95,7 @@ overlay.addEventListener("click", (e) => {
     addTaskModal.classList.remove('open');
     deleteTaskModal.classList.remove('open');
     taskListModal.classList.remove('open');
+    filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });
 
@@ -182,5 +188,19 @@ taskListBtn.addEventListener('click', (e) => {
 
 closeTaskListBtn.addEventListener('click', (e) => {
     taskListModal.classList.remove('open');
+    overlay.classList.remove('active');
+});
+// filter task functionality
+modalfilterTasksBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    filterTaskModal.classList.add('open');
+    overlay.classList.add('active');
+});
+closeFilterFormBtn.addEventListener('click', (e) => {
+    filterTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+});
+cancelFlterTaskBtn.addEventListener('click', (e) => {
+    filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });

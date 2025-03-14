@@ -64,14 +64,13 @@
     <!-- Overlay (Hidden by Default) -->
     <div id="overlay"></div>
 
-    <!-- Add New Task Form (Hidden by Default) -->
+    <!-- Add New Task Form -->
     <div id="addTaskModal" class="fixed top-0 left-0 h-full w-96 bg-white shadow-lg z-50">
         <button class="ml-95 cursor-pointer" id="closeAddFormBtn">×</button>
 
         <div class="p-6">
             <div class="flex justify-between">
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">Add New Task</h2>
-               <!-- <button class="">×</button> -->
             </div>
             <form id="task-form">
                 <div class="mb-4">
@@ -140,12 +139,43 @@
                 <h3 class="mt-4 text-lg font-semibold text-purple-800">Mark All as Done</h3>
             </a>
             <!-- Filter Tasks -->
-            <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300" id="filterTasks">
+            <a href="#" class="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition duration-300" id="modalFilterTasksBtn">
                 <svg class="w-10 h-10 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                 </svg>
                 <h3 class="mt-4 text-lg font-semibold text-green-800">Filter Tasks</h3>
             </a>
+            <div id="filterTaskModal"
+            class="fixed top-0 left 0 h-full w-96 bg-white shadow-lg z-50">
+            <button class="ml-95 cursor-pointer"
+                id="closeFilterFormBtn">×</button>
+            <div class="p-6">
+                <div class="flex justify-between">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Filter
+                        Task</h2> </div>
+                    <form action="" id="filter-task-form">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="From-date">
+                                Select Date  From
+                            </label>
+                            <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " id="From-date" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="To-date">
+                                Select Date To
+                            </label>
+                            <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " id="To-date" required>
+                        </div>
+                        <!-- sumbit and cancel buttons for filter -->
+                         <div class="flex justify-between items-center">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded"
+                        type="submit" id="sumbitFilterTaskBtn"> Filter Task </button>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded"
+                        type="button" id="cancelFlterTaskBtn"> Cancel </button>
+                         </div>
+                    </form>
+            </div>
+        </div>
     
             
                 <!-- Task List Section -->
