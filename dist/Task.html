@@ -168,9 +168,9 @@
                         </div>
                         <!-- sumbit and cancel buttons for filter -->
                          <div class="flex justify-between items-center">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded"
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded cursor-pointer"
                         type="submit" id="sumbitFilterTaskBtn"> Filter Task </button>
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded"
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:shadow-outline focus: outline-none rounded cursor-pointer"
                         type="button" id="cancelFlterTaskBtn"> Cancel </button>
                          </div>
                     </form>
@@ -199,8 +199,13 @@
             <div id="tasksContainer" class="space-y-4">
         
             </div>
+            <div id="filterTasksContainer" class="space-y-4 hidden">
+
+            </div>
+            
         </div>
     </div>
+    
     <!-- Delete Task Form  -->
 <div id="deleteTaskModal" class="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50">
     <button class="ml-95 cursor-pointer" id="closeDeleteFormBtn">×</button>

@@ -25,8 +25,23 @@ const modalfilterTasksBtn = document.getElementById('modalFilterTasksBtn');
 const submitFilterTasksBtn = document.getElementById('submitFilterTasksBtn');
 const closeFilterFormBtn = document.getElementById('closeFilterFormBtn');
 const cancelFlterTaskBtn = document.getElementById('cancelFlterTaskBtn');
+const filterTaskForm = document.getElementById('filter-task-form');
+const filteredTasksContainer = document.getElementById('filteredTasksContainer');
 
 // Functions
+function filterTaskByDate(fromDate, toDate) {
+    const tasks = fetchTasks();
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+
+    const filteredTasks = tasks.filter(task => {
+        const taskDate = new Date(task.date);
+        return taskDate >= from && taskDate <= to;
+    });
+
+    return filteredTasks;
+}
+
 function saveTaskToLocalStorage(task) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(task);
@@ -55,8 +70,9 @@ function fetchTasks() {
     return JSON.parse(localStorage.getItem('tasks')) || [];
 }
 
+// Original display function for all tasks
 function displayTasks() {
-    const tasks = fetchTasks();
+    let tasks = fetchTasks();
     tasksContainer.innerHTML = '';
 
     if (tasks.length === 0) {
@@ -76,6 +92,31 @@ function displayTasks() {
             <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.date}</p>
         `;
         tasksContainer.appendChild(taskElement);
+    });
+}
+
+// New display function for filtered tasks
+function displayFilteredTasks(filteredTasks) {
+    const container = document.getElementById('filteredTasksContainer');
+    container.innerHTML = '';
+
+    if (filteredTasks.length === 0) {
+        container.innerHTML = '<p class="text-gray-500">No tasks found in the given date range.</p>';
+        return;
+    }
+
+    filteredTasks.forEach(task => {
+        const taskElement = document.createElement('div');
+        taskElement.classList = "bg-gray-50 rounded-lg p-4 mb-4";
+        taskElement.innerHTML = `
+            <h2 class="text-lg font-semibold text-gray-800">Task ID: ${task.id}</h2>
+            <p class="text-gray-600"><span class="text-black">Task Title:</span> ${task.title}</p>
+            <p class="text-gray-600"><span class="text-black">Task Description:</span> ${task.description}</p>
+            <p class="text-gray-600"><span class="text-black">Task Due Date:</span> ${task.dueDate}</p>
+            <p class="text-gray-600"><span class="text-black">Task Priority:</span> ${task.priority}</p>
+            <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.date}</p>
+        `;
+        container.appendChild(taskElement);
     });
 }
 
@@ -165,7 +206,7 @@ taskForm.addEventListener('submit', (e) => {
             description: taskDescription,
             dueDate: dueDate,
             priority: priority,
-            date: new Date().toLocaleDateString('en-GB'),
+            date: new Date().toISOString().split('T')[0],
         };
         saveTaskToLocalStorage(task);
         showAlert("Task Added Successfully", 'success');
@@ -190,17 +231,54 @@ closeTaskListBtn.addEventListener('click', (e) => {
     taskListModal.classList.remove('open');
     overlay.classList.remove('active');
 });
-// filter task functionality
+
+// Filter Task Functionality
 modalfilterTasksBtn.addEventListener('click', (e) => {
     e.preventDefault();
     filterTaskModal.classList.add('open');
     overlay.classList.add('active');
 });
+
 closeFilterFormBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });
+
 cancelFlterTaskBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
+
+    // Hide the filtered task list and show the original task list
+    document.getElementById('filteredTasksContainer').classList.add('hidden');
+    document.getElementById('tasksContainer').classList.remove('hidden');
+
+    // Display all tasks in the original container
+    displayTasks();
+});
+
+filterTaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fromDate = document.getElementById('From-date').value;
+    const toDate = document.getElementById('To-date').value;
+
+    if (fromDate && toDate) {
+        const filteredTasks = filterTaskByDate(fromDate, toDate);
+        if (filteredTasks.length > 0) {
+            // Hide the original task list and show the filtered task list
+            document.getElementById('filteredTasksContainer').classList.remove('hidden');
+
+            // Display filtered tasks in the filtered tasks container
+            displayFilteredTasks(filteredTasks);
+
+            // Close the filter modal
+            filterTaskModal.classList.remove('open');
+            overlay.classList.remove('active');
+        } else {
+            showAlert("No tasks found in the given date range.", "error");
+        }
+    } else {
+        showAlert("Please select both From Date and To Date.", "error");
+    }
 });
