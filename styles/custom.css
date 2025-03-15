@@ -107,3 +107,11 @@
 #filterTaskModal.open{
     left: 0;
 }
+#filteredTasksContainer {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+#filteredTasksModal.open {
+    transform: translateX(0);
+}

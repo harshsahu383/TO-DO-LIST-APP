@@ -27,19 +27,38 @@ const closeFilterFormBtn = document.getElementById('closeFilterFormBtn');
 const cancelFlterTaskBtn = document.getElementById('cancelFlterTaskBtn');
 const filterTaskForm = document.getElementById('filter-task-form');
 const filteredTasksContainer = document.getElementById('filteredTasksContainer');
+const filteredTasksModal = document.getElementById('filteredTasksModal');
+const closeFilteredTasksModal = document.getElementById('closeFilteredTasksModal');
 
 // Functions
-function filterTaskByDate(fromDate, toDate) {
-    const tasks = fetchTasks();
-    const from = new Date(fromDate);
-    const to = new Date(toDate);
+function displayFilteredTasks(tasks) {
+    filteredTasksContainer.innerHTML = ""; // Clear previous tasks
 
-    const filteredTasks = tasks.filter(task => {
-        const taskDate = new Date(task.date);
-        return taskDate >= from && taskDate <= to;
+    if (tasks.length === 0) {
+        filteredTasksContainer.innerHTML = "<p class='text-gray-500'>No tasks found.</p>";
+        return;
+    }
+    tasks.forEach(task => {
+        const taskElement = document.createElement("div");
+        taskElement.className = "bg-gray-50 rounded-lg p-4 mb-4";
+        taskElement.innerHTML = `
+        <h2 class="text-lg font-semibold text-gray-800">Task ID: ${task.id}</h2>
+             <p class="text-gray-600"><span class="text-black">Task Title:</span> ${task.title}</p>
+             <p class="text-gray-600"><span class="text-black">Task Description:</span> ${task.description}</p>
+             <p class="text-gray-600"><span class="text-black">Task Due Date:</span> ${task.dueDate}</p>
+             <p class="text-gray-600"><span class="text-black">Task Priority:</span> ${task.priority}</p>
+             <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.date}</p>
+        `;
+        filteredTasksContainer.appendChild(taskElement);
     });
-
-    return filteredTasks;
+}
+        
+        
+function openFilteredTasksModal() {
+    filteredTasksModal.classList.remove("hidden");
+    setTimeout(() => {
+        filteredTasksModal.querySelector("div").classList.add("open");
+    }, 10);
 }
 
 function saveTaskToLocalStorage(task) {
@@ -95,30 +114,30 @@ function displayTasks() {
     });
 }
 
-// New display function for filtered tasks
-function displayFilteredTasks(filteredTasks) {
-    const container = document.getElementById('filteredTasksContainer');
-    container.innerHTML = '';
+// function displayFilteredTasks(filteredTasks) {
+//     const container = document.getElementById('filteredTasksContainer');
+//     container.innerHTML = ''; // Clear previous results
 
-    if (filteredTasks.length === 0) {
-        container.innerHTML = '<p class="text-gray-500">No tasks found in the given date range.</p>';
-        return;
-    }
+//     if (filteredTasks.length === 0) {
+//         container.innerHTML = '<p class="text-gray-500">No tasks found in the given date range.</p>';
+//         return;
+//     }
 
-    filteredTasks.forEach(task => {
-        const taskElement = document.createElement('div');
-        taskElement.classList = "bg-gray-50 rounded-lg p-4 mb-4";
-        taskElement.innerHTML = `
-            <h2 class="text-lg font-semibold text-gray-800">Task ID: ${task.id}</h2>
-            <p class="text-gray-600"><span class="text-black">Task Title:</span> ${task.title}</p>
-            <p class="text-gray-600"><span class="text-black">Task Description:</span> ${task.description}</p>
-            <p class="text-gray-600"><span class="text-black">Task Due Date:</span> ${task.dueDate}</p>
-            <p class="text-gray-600"><span class="text-black">Task Priority:</span> ${task.priority}</p>
-            <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.date}</p>
-        `;
-        container.appendChild(taskElement);
-    });
-}
+//     filteredTasks.forEach(task => {
+//         const taskElement = document.createElement('div');
+//         taskElement.classList = "bg-gray-50 rounded-lg p-4 mb-4";
+//         taskElement.innerHTML = `
+//             <h2 class="text-lg font-semibold text-gray-800">Task ID: ${task.id}</h2>
+//             <p class="text-gray-600"><span class="text-black">Task Title:</span> ${task.title}</p>
+//             <p class="text-gray-600"><span class="text-black">Task Description:</span> ${task.description}</p>
+//             <p class="text-gray-600"><span class="text-black">Task Due Date:</span> ${task.dueDate}</p>
+//             <p class="text-gray-600"><span class="text-black">Task Priority:</span> ${task.priority}</p>
+//             <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.dateAdded}</p>
+//         `;
+//         container.appendChild(taskElement);
+//     });
+// }
+
 
 // Event Listeners
 addNewTaskBtn.addEventListener("click", function (e) {
@@ -245,40 +264,63 @@ closeFilterFormBtn.addEventListener('click', (e) => {
     overlay.classList.remove('active');
 });
 
-cancelFlterTaskBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    filterTaskModal.classList.remove('open');
-    overlay.classList.remove('active');
+// filterTaskForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+    // const fromDate = document.getElementById('From-date').value;
+    // const toDate = document.getElementById('To-date').value;
 
-    // Hide the filtered task list and show the original task list
-    document.getElementById('filteredTasksContainer').classList.add('hidden');
-    document.getElementById('tasksContainer').classList.remove('hidden');
+//     if (fromDate && toDate) {
+//         const filteredTasks = filterTasksByDate(fromDate, toDate);
 
-    // Display all tasks in the original container
-    displayTasks();
+//         // Hide the original task list and show the filtered task list
+//         document.getElementById('tasksContainer').classList.add('hidden');
+//         document.getElementById('filteredTasksContainer').classList.remove('hidden1');
+
+//         // Display the filtered tasks
+//         displayFilteredTasks(filteredTasks);
+//     } else {
+//         showAlert("Please select both From Date and To Date.", 'error');
+//     }
+// });
+
+// cancelFlterTaskBtn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     filterTaskModal.classList.remove('open');
+//     overlay.classList.remove('active');
+
+//     // Hide the filtered task list and show the original task list
+//     document.getElementById('filteredTasksContainer').classList.add('hidden1');
+//     document.getElementById('tasksContainer').classList.remove('hidden');
+
+//     // Display all tasks in the original container
+//     displayTasks();
+// });
+closeFilteredTasksModal.addEventListener("click", () => {
+    filteredTasksModal.querySelector("div").classList.remove("open");
+    setTimeout(() => {
+        filteredTasksModal.classList.add("hidden");
+    }, 300);
 });
-
 filterTaskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const fromDate = document.getElementById('From-date').value;
     const toDate = document.getElementById('To-date').value;
 
-    if (fromDate && toDate) {
-        const filteredTasks = filterTaskByDate(fromDate, toDate);
-        if (filteredTasks.length > 0) {
-            // Hide the original task list and show the filtered task list
-            document.getElementById('filteredTasksContainer').classList.remove('hidden');
-
-            // Display filtered tasks in the filtered tasks container
-            displayFilteredTasks(filteredTasks);
-
-            // Close the filter modal
-            filterTaskModal.classList.remove('open');
-            overlay.classList.remove('active');
-        } else {
-            showAlert("No tasks found in the given date range.", "error");
-        }
-    } else {
-        showAlert("Please select both From Date and To Date.", "error");
+    if (!fromDate || !toDate) {
+        showAlert("Please select both From Date and To Date.", 'error');
+        return;
     }
+    const filteredTasks = tasks.filter(task => {
+        const taskDate = new Date(task.date).getTime();
+        const from = new Date(fromDate).getTime();
+        const to = new Date(toDate).getTime();
+        return taskDate >= from && taskDate <= to;
+    });
+    displayFilteredTasks(filteredTasks);
+    openFilteredTasksModal();
+    filterTaskModal.classList.add('hidden');
+});
+cancelFlterTaskBtn.addEventListener('click', (e) => {
+    filterTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
 });
