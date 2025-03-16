@@ -14,7 +14,7 @@
         #addTaskModal.open {
             left: 0; 
         }
-
+        
         
         #overlay {
             position: fixed;
@@ -29,6 +29,20 @@
 
         #overlay.active {
             display: block;
+        }
+        #editTaskModal{
+            position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 400px; 
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+        }
+        #editTaskModal.open{
+            right: 0;
         }
         #customAlert {
             display: flex;

@@ -29,6 +29,16 @@ const filterTaskForm = document.getElementById('filter-task-form');
 const filteredTasksContainer = document.getElementById('filteredTasksContainer');
 const filteredTasksModal = document.getElementById('filteredTasksModal');
 const closeFilteredTasksModal = document.getElementById('closeFilteredTasksModal');
+const editTaskModal = document.getElementById('editTaskModal');
+const editTaskBtn = document.getElementById('editTaskBtn');
+const editTaskForm = document.getElementById('editTaskForm');
+const editTaskId = document.getElementById('editTaskId');
+const editTaskTitle = document.getElementById('editTaskTitle');
+const editTaskDescription = document.getElementById('editTaskDescription');
+const editTaskDueDate = document.getElementById('editTaskDueDate');
+const editTaskPriority = document.getElementById('editTaskPriority');
+const closeEditTaskModal = document.getElementById('closeEditTaskModal');
+const cancelEditTask = document.getElementById('cancelEditTask');
 
 // Functions
 function displayFilteredTasks(tasks) {
@@ -156,6 +166,7 @@ overlay.addEventListener("click", (e) => {
     deleteTaskModal.classList.remove('open');
     taskListModal.classList.remove('open');
     filterTaskModal.classList.remove('open');
+    editTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });
 
@@ -323,4 +334,53 @@ filterTaskForm.addEventListener('submit', (e) => {
 cancelFlterTaskBtn.addEventListener('click', (e) => {
     filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
+});
+editTaskBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    editTaskModal.classList.add('open');
+    overlay.classList.add('active');
+});
+closeEditTaskModal.addEventListener('click',(e)=>{
+    e.preventDefault();
+    editTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+});
+closeEditTaskModal.addEventListener('click',(e)=>{
+    e.preventDefault();
+    editTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+});
+cancelEditTask.addEventListener('click',(e) => {
+    e.preventDefault();
+    editTaskModal.classList.remove('open');
+    overlay.classList.remove('active');
+
+});
+editTaskForm.addEventListener('submit', (e) => {
+    e. preventDefault();
+
+    const taskId = parseInt(editTaskId.value.trim());
+    const tasks = fetchTasks();
+
+    const taskToEdit = tasks.find(task => task.id === taskId);
+
+    if(taskToEdit){
+        taskToEdit.title = editTaskTitle.value.trim();
+        taskToEdit.description = editTaskDescription.value.trim();
+        taskToEdit.dueDate = editTaskDueDate.value.trim();
+        taskToEdit.priority = editTaskPriority.value;
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        showAlert(`Task ${taskId} Updated Successfully`, 'success');
+
+        editTaskModal.classList.remove('open');
+        overlay.classList.remove('active');
+
+        displayTasks();
+    }
+    else{
+        showAlert(`Task not found ! Please Enter a Valid Task Id`, 'error');
+        editTaskModal.classList.remove('open');
+        overlay.classList.remove('active');
+    }
 });

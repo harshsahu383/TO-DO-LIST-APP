@@ -129,6 +129,55 @@
             </form>
         </div>
     </div>
+    <!-- Edit Task Modal -->
+<div id="editTaskModal" class="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50">
+    <button id="closeEditTaskModal" class="text-gray-500 hover:text-gray-700 float-right mr-50 cursor-pointer">
+        ×
+    </button>
+    <div class="p-6">
+        <h2 class="text-2xl font-bold mb-4">Edit Task</h2>
+        <form id="editTaskForm">
+            <!-- Task ID Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Task ID</label>
+                <input type="text" id="editTaskId" class="w-full p-2 border rounded" required>
+            </div>
+            <!-- Task Title Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Task Title</label>
+                <input type="text" id="editTaskTitle" class="w-full p-2 border rounded" required>
+            </div>
+            <!-- Task Description Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Task Description</label>
+                <textarea id="editTaskDescription" class="w-full p-2 border rounded" rows="4" required></textarea>
+            </div>
+            <!-- Due Date Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Due Date</label>
+                <input type="date" id="editTaskDueDate" class="w-full p-2 border rounded" required>
+            </div>
+            <!-- Priority Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Priority</label>
+                <select id="editTaskPriority" class="w-full p-2 border rounded" required>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+            <!-- Buttons -->
+            <div class="flex justify-between">
+                <button type="button" id="cancelEditTask" class="bg-gray-500 text-white px-4 py-2 rounded-lg mr-2 cursor-pointer">
+                    Cancel
+                </button>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
     <div class="bg-white shadow-md rounded-lg p-6 mt-6 mx-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Mark All As done -->
@@ -176,7 +225,7 @@
                     </form>
             </div>
         </div>
-    
+        
             
                 <!-- Task List Section -->
                 <a href="#" id="taskListBtn" class="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition duration-300 block">
