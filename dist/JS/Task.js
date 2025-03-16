@@ -42,7 +42,7 @@ const cancelEditTask = document.getElementById('cancelEditTask');
 
 // Functions
 function displayFilteredTasks(tasks) {
-    filteredTasksContainer.innerHTML = ""; // Clear previous tasks
+    filteredTasksContainer.innerHTML = ""; 
 
     if (tasks.length === 0) {
         filteredTasksContainer.innerHTML = "<p class='text-gray-500'>No tasks found.</p>";
@@ -124,30 +124,6 @@ function displayTasks() {
     });
 }
 
-// function displayFilteredTasks(filteredTasks) {
-//     const container = document.getElementById('filteredTasksContainer');
-//     container.innerHTML = ''; // Clear previous results
-
-//     if (filteredTasks.length === 0) {
-//         container.innerHTML = '<p class="text-gray-500">No tasks found in the given date range.</p>';
-//         return;
-//     }
-
-//     filteredTasks.forEach(task => {
-//         const taskElement = document.createElement('div');
-//         taskElement.classList = "bg-gray-50 rounded-lg p-4 mb-4";
-//         taskElement.innerHTML = `
-//             <h2 class="text-lg font-semibold text-gray-800">Task ID: ${task.id}</h2>
-//             <p class="text-gray-600"><span class="text-black">Task Title:</span> ${task.title}</p>
-//             <p class="text-gray-600"><span class="text-black">Task Description:</span> ${task.description}</p>
-//             <p class="text-gray-600"><span class="text-black">Task Due Date:</span> ${task.dueDate}</p>
-//             <p class="text-gray-600"><span class="text-black">Task Priority:</span> ${task.priority}</p>
-//             <p class="text-gray-600"><span class="text-black">Date Added:</span> ${task.dateAdded}</p>
-//         `;
-//         container.appendChild(taskElement);
-//     });
-// }
-
 
 // Event Listeners
 addNewTaskBtn.addEventListener("click", function (e) {
@@ -208,14 +184,13 @@ deletetaskForm.addEventListener('submit', (e) => {
 
     if (taskId) {
         let tasks = fetchTasks();
-        tasks = tasks.filter(task => task.id !== parseInt(taskId)); // Remove the task with the matching ID
-        localStorage.setItem('tasks', JSON.stringify(tasks)); // Update local storage
+        tasks = tasks.filter(task => task.id !== parseInt(taskId)); 
+        localStorage.setItem('tasks', JSON.stringify(tasks)); 
         showAlert(`Task ${taskId} Deleted Successfully`, 'success');
         deletetaskForm.reset();
         deleteTaskModal.classList.remove('open');
         overlay.classList.remove('active');
-        displayTasks(); // Refresh the task list
-    } else {
+        displayTasks(); 
         showAlert("Please enter a valid Task ID", "error");
     }
 });
@@ -243,7 +218,7 @@ taskForm.addEventListener('submit', (e) => {
         taskForm.reset();
         addTaskModal.classList.remove('open');
         overlay.classList.remove('active');
-        displayTasks(); // Refresh the task list
+        displayTasks(); 
     } else {
         showAlert("Fill all the columns First", "error");
     }
@@ -254,7 +229,7 @@ taskListBtn.addEventListener('click', (e) => {
     e.preventDefault();
     taskListModal.classList.add('open');
     overlay.classList.add('active');
-    displayTasks(); // Load tasks into the modal
+    displayTasks(); 
 });
 
 closeTaskListBtn.addEventListener('click', (e) => {
@@ -274,38 +249,6 @@ closeFilterFormBtn.addEventListener('click', (e) => {
     filterTaskModal.classList.remove('open');
     overlay.classList.remove('active');
 });
-
-// filterTaskForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-    // const fromDate = document.getElementById('From-date').value;
-    // const toDate = document.getElementById('To-date').value;
-
-//     if (fromDate && toDate) {
-//         const filteredTasks = filterTasksByDate(fromDate, toDate);
-
-//         // Hide the original task list and show the filtered task list
-//         document.getElementById('tasksContainer').classList.add('hidden');
-//         document.getElementById('filteredTasksContainer').classList.remove('hidden1');
-
-//         // Display the filtered tasks
-//         displayFilteredTasks(filteredTasks);
-//     } else {
-//         showAlert("Please select both From Date and To Date.", 'error');
-//     }
-// });
-
-// cancelFlterTaskBtn.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     filterTaskModal.classList.remove('open');
-//     overlay.classList.remove('active');
-
-//     // Hide the filtered task list and show the original task list
-//     document.getElementById('filteredTasksContainer').classList.add('hidden1');
-//     document.getElementById('tasksContainer').classList.remove('hidden');
-
-//     // Display all tasks in the original container
-//     displayTasks();
-// });
 closeFilteredTasksModal.addEventListener("click", () => {
     filteredTasksModal.querySelector("div").classList.remove("open");
     setTimeout(() => {
