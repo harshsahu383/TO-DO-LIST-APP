@@ -32,7 +32,7 @@ While building this project, I encountered some interesting challenges:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/todo-list.git
+   git clone https://github.com/harshsahu383/todo-list.git
    ```
 2. Open the `index.html` file in your browser.
 
