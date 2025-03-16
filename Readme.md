@@ -9,8 +9,8 @@ Welcome to my **To-Do List** project! ✅ This is a simple yet efficient task ma
 - **Tailwind CSS** 💨 - Utility-first CSS framework
 - **JavaScript** 🚀 - Core functionality
 - **Git** 🔄 - Version control
-- **Chatgpt** - for debuging the code
-- **DeepSeek** - for improving codes and logic
+- **Chatgpt** 🚀- For Febuging The Code
+- **DeepSeek** 🚀- For Improving Codes And Logic
 
 ## 📌 Features
 
@@ -32,7 +32,7 @@ While building this project, I encountered some interesting challenges:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/harshsahu383/todo-list.git
+   git clone https://github.com/harshsahu383/TO-DO-LIST-APP
    ```
 2. Open the `index.html` file in your browser.
 
