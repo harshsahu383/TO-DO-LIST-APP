@@ -9,7 +9,7 @@ Welcome to my **To-Do List** project! ✅ This is a simple yet efficient task ma
 - **Tailwind CSS** 💨 - Utility-first CSS framework
 - **JavaScript** 🚀 - Core functionality
 - **Git** 🔄 - Version control
-- **Chatgpt** 🚀- For Febuging The Code
+- **Chatgpt** 🚀- For Debuging The Code
 - **DeepSeek** 🚀- For Improving Codes And Logic
 
 ## 📌 Features
