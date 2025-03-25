@@ -129,3 +129,23 @@
 #filteredTasksModal.open {
     transform: translateX(0);
 }
+.dark {
+        --bg-primary: #1a202c;
+        --bg-secondary: #2d3748;
+        --bg-tertiary: #4a5568;
+        --text-primary: #f7fafc;
+        --text-secondary: #e2e8f0;
+    }
+    
+    .dark body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+    
+    .dark .bg-white {
+        background-color: var(--bg-secondary);
+    }
+    
+    .dark .text-gray-800 {
+        color: var(--text-primary);
+    }
