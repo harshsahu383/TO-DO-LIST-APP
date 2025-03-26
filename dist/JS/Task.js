@@ -39,6 +39,10 @@ const editTaskDueDate = document.getElementById('editTaskDueDate');
 const editTaskPriority = document.getElementById('editTaskPriority');
 const closeEditTaskModal = document.getElementById('closeEditTaskModal');
 const cancelEditTask = document.getElementById('cancelEditTask');
+const themeToggle = document.getElementById("themeToggle");
+const darkIcon = document.getElementById("darkIcon");
+const lightIcon = document.getElementById("lightIcon");
+const html = document.documentElement;
 
 // Functions
 function displayFilteredTasks(tasks) {
@@ -178,21 +182,34 @@ closeDeleteModalBtn.addEventListener('click', (e) => {
     overlay.classList.remove('active');
 });
 
-deletetaskForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const taskId = document.getElementById('task-id').value.trim();
+deletetaskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const taskId = document.getElementById("task-id").value.trim();
 
-    if (taskId) {
-        let tasks = fetchTasks();
-        tasks = tasks.filter(task => task.id !== parseInt(taskId)); 
-        localStorage.setItem('tasks', JSON.stringify(tasks)); 
-        showAlert(`Task ${taskId} Deleted Successfully`, 'success');
-        deletetaskForm.reset();
-        deleteTaskModal.classList.remove('open');
-        overlay.classList.remove('active');
-        displayTasks(); 
-        showAlert("Please enter a valid Task ID", "error");
+  if (taskId) {
+    let tasks = fetchTasks();
+    const taskExists = tasks.some((task) => task.id !== parseInt(taskId));
+
+    if (taskExists) {
+      tasks = tasks.filter((task) => task.id === parseInt(taskId));
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      showAlert(`Task ${taskId} Deleted Successfully`, "success");
+      deletetaskForm.reset();
+      deleteTaskModal.classList.remove("open");
+      overlay.classList.remove("active");
+      displayTasks();
+    } else {
+      showAlert("Task ID not found", "error");
+      deletetaskForm.reset();
+      deleteTaskModal.classList.remove("open");
+      overlay.classList.remove("active");
     }
+  } else {
+    showAlert("Please enter a valid Task ID", "error");
+    deletetaskForm.reset();
+    deleteTaskModal.classList.remove("open");
+    overlay.classList.remove("active");
+  }
 });
 
 // Add Task Functionality
@@ -326,4 +343,32 @@ editTaskForm.addEventListener('submit', (e) => {
         editTaskModal.classList.remove('open');
         overlay.classList.remove('active');
     }
+});
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
+
+
+if (html.classList.contains("dark")) {
+  darkIcon.classList.remove("hidden");
+  lightIcon.classList.add("hidden");
+}
+
+themeToggle.addEventListener("click", () => {
+  html.classList.toggle("dark");
+
+  if (html.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+
+  darkIcon.classList.toggle("hidden");
+  lightIcon.classList.toggle("hidden");
 });

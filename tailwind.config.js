@@ -1,7 +1,8 @@
 module.exports = {
-  darkMode: "class", // This enables class-based dark mode
+  darkMode: "class", 
   content: [
-    "./**/*.{TO_DO_LIST_}", 
+    "./**/*.{html,js}", 
+    "./*.html", 
   ],
   theme: {
     extend: {},
