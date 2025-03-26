@@ -188,10 +188,10 @@ deletetaskForm.addEventListener("submit", (e) => {
 
   if (taskId) {
     let tasks = fetchTasks();
-    const taskExists = tasks.some((task) => task.id !== parseInt(taskId));
+    const taskExists = tasks.some((task) => task.id === parseInt(taskId));
 
     if (taskExists) {
-      tasks = tasks.filter((task) => task.id === parseInt(taskId));
+      tasks = tasks.filter((task) => task.id !== parseInt(taskId));
       localStorage.setItem("tasks", JSON.stringify(tasks));
       showAlert(`Task ${taskId} Deleted Successfully`, "success");
       deletetaskForm.reset();
